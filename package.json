@@ -1,0 +1,22 @@
+{
+  "name": "vuek",
+  "version": "0.1.0",
+  "description": "Petite-Vue Toolkit (Stand-Alone)",
+  "author": "hlop3z",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.min.js",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc && vite build && npm run build:rollup && npm run build:cleanup",
+    "preview": "vite preview",
+    "build:rollup": "rollup -c",
+    "build:cleanup": "rm dist/index.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.3.4",
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^3.29.4"
+  }
+}

@@ -6,22 +6,28 @@ import * as Util from "./internal/utils/__init__.ts";
 
 const __MAGIC__ = ["delimiters", "store", "magic", "use"];
 
-const Project = {
+const isFunction = (v) => v && {}.toString.call(v) === "[object Function]";
+
+const Project: any = {
   // Petite-Vue
   createApp,
   reactive,
   nextTick,
 
   // Custom
-  actions: Util.actions,
-  api: Util.api,
-  form: Util.form,
-  i18n: Util.i18n,
-  inject: Util.inject,
+  method: () => {},
   theme: Util.theme,
-  validator: Util.validator,
+  util: {
+    actions: Util.actions,
+    api: Util.api,
+    form: Util.form,
+    i18n: Util.i18n,
+    inject: Util.inject,
+    validator: Util.validator,
+  },
 
   // Global Dict
+  __magic__: {},
   __dict__: {
     store: {},
     directives: {},
@@ -49,7 +55,8 @@ const Project = {
       (x) => !__MAGIC__.includes(x)
     );
     magicKeys.forEach((name) => {
-      config["$" + name] = this.__dict__.magic[name];
+      const method = this.__dict__.magic[name];
+      config["$" + name] = method;
     });
 
     // App
@@ -63,10 +70,37 @@ const Project = {
     return App;
   },
 
+  /**
+   * @Plugins
+   */
   use(setup: any, config: any = {}) {
     setup.install(this, config);
   },
 
+  /**
+   * @Init
+   */
+  init(options?) {
+    this.use(PluginCore, options || {});
+  },
+
+  /**
+   * @Directives
+   */
+  directive(name: string, method: Function) {
+    this.__dict__.directives[name] = method;
+  },
+
+  /**
+   * @Components
+   */
+  component(name: string, method: Function) {
+    this.__dict__.components[name] = method;
+  },
+
+  /**
+   * @Store
+   */
   store(name: string, props?: any) {
     if (name && !props) {
       return this.__dict__.store[name];
@@ -75,29 +109,26 @@ const Project = {
     return this.__dict__.store[name];
   },
 
-  component(name: string, method: Function) {
-    this.__dict__.components[name] = method;
-  },
-
-  directive(name: string, method: Function) {
-    this.__dict__.directives[name] = method;
-  },
-
-  magic(name: string, props: any) {
+  /**
+   * @Magic
+   */
+  magic(name: string, method?: any) {
+    // Getter
+    if (name && !method) {
+      return this.__dict__.magic[name];
+    }
+    // Register
     if (Object.keys(this.__dict__.magic).includes(name)) {
       const errorMessage = `Magic { ${name} } already exists!`;
       throw new Error(errorMessage);
     } else {
-      if (name && !props) {
-        return this.__dict__.magic[name];
+      if (isFunction(method)) {
+        const val = method(this);
+        this.__dict__.magic[name] = val;
+        return val;
       }
-      this.__dict__.magic[name] = props;
-      return this.__dict__.magic[name];
     }
   },
 };
-
-// Install Core Plugin
-Project.use(PluginCore);
 
 export default Project;

@@ -1,0 +1,26 @@
+[build-system]
+requires = ["pdm-pep517>=1.0.0"]
+build-backend = "pdm.pep517.api"
+
+[project]
+name = ""
+version = ""
+description = ""
+authors = [
+    {name = "hlop3z", email = "23062270+hlop3z@users.noreply.github.com"},
+]
+dependencies = ["mkdocs", "mkdocs-material"]
+requires-python = ">=3.10"
+license = {text = "MIT"}
+
+[tool]
+[tool.pdm]
+[[tool.pdm.source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[tool.pdm.scripts]
+dev = "python -m mkdocs serve --dev-addr 0.0.0.0:8055"
+build = "python -m mkdocs build"
+gh-deploy = "python -m mkdocs gh-deploy --force"

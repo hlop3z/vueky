@@ -1,17 +1,20 @@
 // @ts-nocheck
 import Directives from "./directives.ts";
 import Device from "./device.ts";
-import Lorem from "./utils/lorem.ts";
-// import Store from "./store.ts";
+import * as Util from "./utils/__init__.ts";
 
 const isDark =
   window.matchMedia &&
   window.matchMedia("(prefers-color-scheme: dark)").matches;
 
+const _CORE = ["store", "components", "directives", "magic"];
+
 export default {
-  install: (App, config) => {
-    // Tools
-    console.log(App, config);
+  __kwargs__: ["methods", "theme", "i18n", "mobile", ..._CORE],
+
+  install: (App, opts) => {
+    const options = opts || {};
+    console.log(options);
 
     // Directives
     const directives = Directives(App);
@@ -19,42 +22,59 @@ export default {
       App.directive(name, directives[name])
     );
 
+    // Magic
+    App.magic("lorem", () => Util.lorem);
+
     // Device Size
-    Device(App);
+    Device(App, options.mobile);
 
     // Dark Mode
     App.store("darkMode", {
       on: isDark,
       toggle() {
         this.on = !this.on;
+        // Change Theme
+        if (options.theme && App.theme && App.theme.toggle) {
+          App.theme.toggle();
+        }
       },
     });
 
-    // Magic
-    App.magic("lorem", Lorem);
+    // Theme
+    if (options.theme) {
+      App.theme.set({
+        ...options.theme,
+        darkMode: isDark,
+      });
+    }
 
+    // Actions
+    if (options.methods) {
+      const actions = Util.actions(options.methods, App);
+      App.method = actions;
+    }
+
+    // i18n
+    if (options.i18n) {
+      const translations = Util.i18n(options.i18n);
+      App.store("i18n", translations);
+      App.magic("i18n", () => translations);
+    }
+
+    const registerItems = (items, registerFn) => {
+      if (items) {
+        Object.entries(items).forEach(([name, item]) => registerFn(name, item));
+      }
+    };
+
+    // Register stores, magic, directives, and components
+    registerItems(options.store, App.store.bind(App));
+    registerItems(options.magic, App.magic.bind(App));
+    registerItems(options.directives, App.directive.bind(App));
+    registerItems(options.components, App.component.bind(App));
     /**
      * @Demo
      */
-    // Magic
-    App.magic("i18n", () => "some value");
-
-    // Component
-    App.component("counter", (props) => {
-      return {
-        $template: "#template-counter",
-        count: props.initialCount,
-        open: false,
-        get css() {
-          return {
-            on: `css-${this.count}`,
-            off: `css-dark`,
-          };
-        },
-        inc() {
-          this.count++;
-        },
-      };
-    });
+    // App.magic("i18n", () => "some value");
   },
 };

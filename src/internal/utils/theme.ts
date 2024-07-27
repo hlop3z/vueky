@@ -16,10 +16,11 @@ class ThemeCreator {
     zebra = true,
     darkMode = false,
   }: any) {
+    const init = Object.keys(base).length > 0;
     this.base = base;
     this.dark = { ...base, ...(dark || {}) };
     this.disable = disable;
-    this.zebra = zebra ? "#f2f2f2" : false;
+    this.zebra = init && zebra ? "#f2f2f2" : false;
     this.colors = [];
     this.current = darkMode ? this.dark : base;
     this.isDark = darkMode;
@@ -42,7 +43,6 @@ class ThemeCreator {
     } else {
       this.current = this.base;
     }
-    console.log("WTF", this.isDark);
     this.createTheme();
   }
 

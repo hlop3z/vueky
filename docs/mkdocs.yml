@@ -1,0 +1,61 @@
+site_name: Vuek
+site_url: https://example.com/
+# repo_url: https://github.com/blabla
+# copyright: Copyright © ByMe
+
+nav:
+  - Introduction: index.md
+  - State: store.md
+  - Directives: directives.md
+  - Built-In:
+      - Directives: plugins/custom-directives.md
+
+# Configurations
+extra_css:
+  - css/extra.css
+
+theme:
+  name: material
+  locale: en
+  features:
+    # - navigation.tabs
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - content.code.annotate
+    - content.code.copy
+    # - navigation.expand
+  icon:
+    logo: material/atom
+
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: pink
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: pink
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+
+markdown_extensions:
+  - tables
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.snippets
+  - pymdownx.superfences:
+  #      custom_fences:
+  #        - name: mermaid
+  #          class: mermaid
+  #          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+#  - pymdownx.emoji:
+#      emoji_index: !!python/name:material.extensions.emoji.twemoji
+#      emoji_generator: !!python/name:material.extensions.emoji.to_svg

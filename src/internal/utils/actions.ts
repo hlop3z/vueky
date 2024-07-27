@@ -20,12 +20,12 @@ export function flattenActions(obj: any, path: string = "") {
   return result;
 }
 
-function actionGroups(root: any) {
+function actionGroups(root: any, App?: any) {
   const admin: any = actionCore(root);
   return (name: string, args: any): any => {
     const method = admin(name);
     if (method) {
-      return method(args);
+      return method({ $app: App, ...(args || {}) });
     } else {
       const errorMessage = `Method { ${name} } Not Found`;
       throw new Error(errorMessage);
@@ -33,8 +33,8 @@ function actionGroups(root: any) {
   };
 }
 
-export default function action(root: any) {
-  const methods: any = actionGroups(root);
+export default function action(root: any, App?: any) {
+  const methods: any = actionGroups(root, App);
   methods.keys = flattenActions(root);
   return methods;
 }

@@ -5,62 +5,38 @@ import setPopover from "./utils/internal/popover.ts";
 
 inject(ripple.css, "ripple");
 
+// @ts-ignore
 export default function (App: any) {
   return {
     /**
-     * @directive => Demo
-     */
-    other: (ctx: any) => {
-      directive.object("other", ctx.el);
-      console.log("Other", ctx.el.__dict__);
-
-      // the element the directive is on
-      // console.log(ctx.el.__dict__);
-
-      // v-my-dir:foo -> "foo"
-      // console.log(ctx.arg);
-
-      // v-my-dir.mod -> { mod: true }
-      // console.log(ctx.modifiers);
-
-      // the raw value expression
-      // e.g. v-my-dir="x" then this would be "x"
-      // console.log(ctx.exp);
-    },
-    /**
      * @directive => Ripple
      */
-    ripple: (ctx: any) => {
-      const { el: element } = ctx;
-      ctx.exp
-        ? ripple.directive(element, ctx.get())
-        : ripple.directive(element);
+    ripple: ({ el: element, get, exp }: any) => {
+      exp ? ripple.directive(element, get()) : ripple.directive(element);
     },
     /**
      * @directive => Style
      */
-    style: (ctx: any) => {
-      const { el: element, arg: value, exp: expression } = ctx;
+    style: ({ el: element, arg: value, exp: expression, get }: any) => {
       if (value && expression) {
-        element.style[value] = ctx.get();
+        element.style[value] = get();
       }
     },
     /**
      * @directive => Theme
      */
-    theme: (ctx: any) => {
-      const { el: element, arg, exp: expression } = ctx;
+    theme: ({ el: element, arg, exp: expression, get, effect }: any) => {
       const isAdmin = arg === "is";
 
       const actionTypes = ["theme", "theme_active", "theme_error"];
       actionTypes.forEach((type) => {
-        directive.object(type, ctx.el);
+        directive.object(type, element);
       });
 
       if (isAdmin && expression) {
-        ctx.effect(() => {
-          const value = ctx.get();
-          const dict = ctx.el.__dict__;
+        effect(() => {
+          const value = get();
+          const dict = element.__dict__;
 
           const applyClasses = (activeType: string) => {
             Color.types.forEach((type) => {
@@ -85,23 +61,23 @@ export default function (App: any) {
         });
       } else {
         if (expression) {
-          const value = ctx.get();
+          const value = get();
           const setup: any = Color.setup({ arg });
           if (setup.base) {
             if (Color.types.includes(setup.type)) {
               const color = theme.class(setup.type, value);
-              ctx.el.__dict__.theme[setup.type] = color;
+              element.__dict__.theme[setup.type] = color;
               element.classList.add(color);
             }
           } else if (setup.active) {
             if (Color.types.includes(setup.type)) {
               const color = theme.class(setup.type, value);
-              ctx.el.__dict__.theme_active[setup.type] = color;
+              element.__dict__.theme_active[setup.type] = color;
             }
           } else if (setup.error) {
             if (Color.types.includes(setup.type)) {
               const color = theme.class(setup.type, value);
-              ctx.el.__dict__.theme_error[setup.type] = color;
+              element.__dict__.theme_error[setup.type] = color;
             }
           }
         }
@@ -110,25 +86,24 @@ export default function (App: any) {
     /**
      * @directive => CSS
      */
-    css: (ctx: any) => {
-      const { el: element } = ctx;
-      directive.object("css", ctx.el);
+    css: ({ el: element, arg, exp, get, modifiers, effect }: any) => {
+      directive.object("css", element);
 
-      if (ctx.arg === "on" && ctx.exp) {
-        const value = ctx.get();
-        ctx.el.__dict__.css.on = value.split(" ").filter((x: any) => x);
-      } else if (ctx.arg === "off" && ctx.exp) {
-        const value = ctx.get();
-        ctx.el.__dict__.css.off = value.split(" ").filter((x: any) => x);
-      } else if (ctx.exp) {
-        if (ctx.modifiers) {
-          if (ctx.modifiers.hide) {
+      if (arg === "on" && exp) {
+        const value = get();
+        element.__dict__.css.on = value.split(" ").filter((x: any) => x);
+      } else if (arg === "off" && exp) {
+        const value = get();
+        element.__dict__.css.off = value.split(" ").filter((x: any) => x);
+      } else if (exp) {
+        if (modifiers) {
+          if (modifiers.hide) {
             element.style.display = "none";
             element.style.pointerEvents = "none";
           }
         }
-        ctx.effect(() => {
-          const isActive = ctx.get();
+        effect(() => {
+          const isActive = get();
           const cssON = element.__dict__.css.on;
           const cssOFF = element.__dict__.css.off;
           if (isActive) {
@@ -155,9 +130,8 @@ export default function (App: any) {
     /**
      * @directive => Hover
      */
-    hover: (ctx: any) => {
-      const { el: element } = ctx;
-      const method = ctx.get();
+    hover: ({ el: element, get }: any) => {
+      const method = get();
 
       const handler = (value: boolean) => (event: any) => {
         const args = directive.response(element, { value, event });
@@ -181,9 +155,8 @@ export default function (App: any) {
     /**
      * @directive => Swipe
      */
-    swipe: (ctx: any) => {
-      const { el: element } = ctx;
-      const method = ctx.get();
+    swipe: ({ el: element, get }: any) => {
+      const method = get();
 
       const onSwipe = (value: any) => {
         const args = directive.response(element, { value });
@@ -240,9 +213,8 @@ export default function (App: any) {
     /**
      * @directive => Scroll
      */
-    scroll: (ctx: any) => {
-      const { el: element } = ctx;
-      const method = ctx.get();
+    scroll: ({ el: element, get }: any) => {
+      const method = get();
 
       const handler = (event: any) => {
         const args = directive.response(self, {
@@ -268,8 +240,9 @@ export default function (App: any) {
     /**
      * @directive => Popover
      */
-    popover: (ctx: any) => {
-      const { el: element, arg } = ctx;
+    popover: ({ el: element, arg, get }: any) => {
+      directive.object("space", element);
+      directive.object("pos", element);
 
       function setSpace(args: any) {
         // Reset styles
@@ -279,33 +252,33 @@ export default function (App: any) {
         element.style.paddingTop = null;
         if (args.x === "center") {
           if (args.x === "right") {
-            element.style.paddingLeft = element.__space__.x;
+            element.style.paddingLeft = element.__dict__.space.x;
           }
           if (args.x === "left") {
-            element.style.paddingRight = element.__space__.x;
+            element.style.paddingRight = element.__dict__.space.x;
           }
         } else if (args.x === "right") {
-          element.style.paddingLeft = element.__space__.x;
+          element.style.paddingLeft = element.__dict__.space.x;
         } else if (args.x === "left") {
-          element.style.paddingRight = element.__space__.x;
+          element.style.paddingRight = element.__dict__.space.x;
         }
 
         if (args.y === "top") {
-          element.style.paddingBottom = element.__space__.y;
+          element.style.paddingBottom = element.__dict__.space.y;
         } else if (args.y === "bottom") {
-          element.style.paddingTop = element.__space__.y;
+          element.style.paddingTop = element.__dict__.space.y;
         }
       }
 
       if (arg === "space") {
-        const data = ctx.get();
-        element.__space__ = data;
-        if (element.__pos__) {
-          setSpace(element.__pos__);
+        const data = get();
+        element.__dict__.space = data;
+        if (element.__dict__.pos) {
+          setSpace(element.__dict__.pos);
         }
       }
       if (!arg) {
-        const _data = ctx.get();
+        const _data = get();
         const data = { ..._data };
 
         // element.style.display = "none";
@@ -323,12 +296,12 @@ export default function (App: any) {
               data.x = _data.y === "center" ? pos.inverted.x : pos.x;
             }
           }
-          if (element.__space__) {
+          if (element.__dict__.space) {
             setSpace(data);
           }
 
-          // console.log(element.__space__, data.x, data.y);
-          element.__pos__ = { ...data };
+          // console.log(element.__dict__.space, data.x, data.y);
+          element.__dict__.pos = { ...data };
           setPopover(element, data.x, data.y);
         }
 

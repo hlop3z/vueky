@@ -72,7 +72,7 @@ Core.init({
   },
   methods: {
     demo({ $app }) {
-      console.log($app.magic("i18n")("en.greetings.hello"));
+      console.log($app.magic("i18n")("greetings.hello"));
     },
   },
   theme: {
@@ -116,7 +116,11 @@ Core.init({
 });
 
 Core.store("darkMode").toggle();
+
 Core.method("demo", { keyA: true });
+
+Core.magic("i18n").locale = "fr";
+console.log(Core.magic("i18n")("greetings.hello"));
 
 /*
 const Plugin = {
@@ -215,5 +219,14 @@ Core.component("form", (props) => {
     $template: "#template-form",
   };
 });
+
+Core.component("button", (props) => {
+  return {
+    $template: "<button>${ text }</button>",
+    text: props.text,
+  };
+});
+
+console.log(Object.keys(Core.__dict__.magic));
 
 Core.app().mount();

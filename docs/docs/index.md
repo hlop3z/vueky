@@ -1,11 +1,11 @@
 # Welcome to MkDocs
 
-Vuek is a **standalone** semi-fork and extension of <a href="https://github.com/vuejs/petite-vue" target="_blank">**`petite-vue`**</a> and also inspired by **`alpinejs`**, designed to offer a more robust and feature-rich experience while maintaining the lightweight and reactive nature of the original library. Vuek enhances the core capabilities of petite-vue by introducing additional functionalities.
+Vuek is a **standalone** wrapper and extension of <a href="https://github.com/vuejs/petite-vue" target="_blank">**`petite-vue`**</a> and also inspired by **`alpinejs`**, designed to offer a more robust and feature-rich experience while maintaining the lightweight and reactive nature of the original library. Vuek enhances the core capabilities of petite-vue by introducing additional functionalities.
 
 ## Usage
 
 ```html
-<script src="https://unpkg.com/vuek"></script>
+<script src="https://unpkg.com/vuek@latest"></script>
 ```
 
 ## Templates
@@ -24,14 +24,25 @@ This design choice ensures seamless integration with Django, Jinja2, or any othe
 <div v-scope>${ myValue }</div>
 ```
 
-## Features
+## Features (**`Vuek`**)
+
+| Name                   | Description                                                        |
+| ---------------------- | ------------------------------------------------------------------ |
+| **`vuek.init()`**      | Initializes Vuek with the provided configuration.                  |
+| **`vuek.use()`**       | Plugin registration tool.                                          |
+| **`vuek.store()`**     | Registers a reactive global object for state management.           |
+| **`vuek.magic()`**     | Registers a global variable accessible via special **`$`** syntax. |
+| **`vuek.directive()`** | Registers a custom global directive for use in templates.          |
+| **`vuek.component()`** | Registers a custom global component for use in templates.          |
+
+## Features (**`petite-vue`**)
 
 | Name                 | Description                                               |
 | -------------------- | --------------------------------------------------------- |
 | **`v-scope`**        | Marks the regions on the page that should be controlled . |
 | **`v-effect`**       | Execute reactive inline statements.                       |
 | **`@vue:mounted`**   | Component mounted event.                                  |
-| **`@vue:unmounted`** | Component UNmounted event.                                |
+| **`@vue:unmounted`** | Component unmounted event.                                |
 
 ### Vue Compatible
 

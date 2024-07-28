@@ -5,10 +5,12 @@ site_url: https://example.com/
 
 nav:
   - Introduction: index.md
+  - Init: configurations.md
   - State: store.md
   - Directives: directives.md
   - Built-In:
-      - Directives: plugins/custom-directives.md
+      - Magic: built-in/magic.md
+      - Directives: built-in/directives.md
 
 # Configurations
 extra_css:

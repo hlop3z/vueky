@@ -14,7 +14,6 @@ export default {
 
   install: (App, opts) => {
     const options = opts || {};
-    console.log(options);
 
     // Directives
     const directives = Directives(App);
@@ -57,8 +56,11 @@ export default {
     // i18n
     if (options.i18n) {
       const translations = Util.i18n(options.i18n);
-      App.store("i18n", translations);
-      App.magic("i18n", () => translations);
+      const method = (arg) =>
+        translations(App.magic("i18n").locale + "." + arg);
+      App.store("i18n", method);
+      App.magic("i18n", () => method);
+      App.magic("i18n").locale = "en";
     }
 
     const registerItems = (items, registerFn) => {

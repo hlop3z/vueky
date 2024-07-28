@@ -17,9 +17,12 @@ export default function (App: any) {
     /**
      * @directive => Style
      */
-    style: ({ el: element, arg: value, exp: expression, get }: any) => {
+    style: ({ el: element, arg: value, exp: expression, get, effect }: any) => {
       if (value && expression) {
         element.style[value] = get();
+        effect(() => {
+          element.style[value] = get();
+        });
       }
     },
     /**
@@ -34,11 +37,10 @@ export default function (App: any) {
       });
 
       if (isAdmin && expression) {
-        effect(() => {
-          const value = get();
-          const dict = element.__dict__;
+        const dict = element.__dict__;
 
-          const applyClasses = (activeType: string) => {
+        const applyClasses = (activeType: string) => {
+          App.nextTick(() => {
             Color.types.forEach((type) => {
               actionTypes.forEach((actionType) => {
                 element.classList.remove(dict[actionType][type]);
@@ -49,8 +51,11 @@ export default function (App: any) {
                 element.classList.add(dict.theme[type]);
               }
             });
-          };
+          });
+        };
 
+        effect(() => {
+          const value = get();
           if ([true, "active"].includes(value)) {
             applyClasses("theme_active");
           } else if ([false, undefined, null, ""].includes(value)) {

@@ -14,12 +14,14 @@ const Project: any = {
   reactive,
   nextTick,
 
-  // Custom
+  // Methods
   method: () => {},
+
+  // Utils
+  API: Util.api,
   theme: Util.theme,
   util: {
     actions: Util.actions,
-    api: Util.api,
     form: Util.form,
     i18n: Util.i18n,
     inject: Util.inject,
@@ -40,6 +42,7 @@ const Project: any = {
     },
   },
 
+  // Custom `createApp`
   app(props: any = {}) {
     const config = {
       $delimiters: ["${", "}"],

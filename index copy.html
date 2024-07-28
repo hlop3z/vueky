@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+
+    <!-- Icon -->
+    <link rel="icon" type="image/x-icon" href="/logo.png" />
+
+    <!-- Title -->
+    <title>Alphine</title>
+
+    <!-- xtyle (CSS) -->
+    <link href="https://unpkg.com/xtyle-css@latest" rel="stylesheet" />
+
+    <!-- Material -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+
+    <!-- Animate (CSS) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <!-- iMask -->
+    <script src="https://unpkg.com/imask"></script>
+
+    <style>
+      .form-group {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app" class="d-f df-col dy-ce eh-100p">
+      <div class="ta-c">
+        <h1 v-scope>${ $store.title }</h1>
+        <p v-scope>Magic ${ $i18n("fr.greetings.hello") }</p>
+        <p v-scope>Global ${ $store.device.size }</p>
+        <div v-scope="$use.counter({ initialCount: 1 })"></div>
+      </div>
+
+      <div v-scope="$use.form()"></div>
+
+      <div class="d-f oy-a df-col" v-scope v-scroll="(arg) => console.log(arg)">
+        ${ $lorem.s(40) }
+        <div v-scope="$use.popover()"></div>
+        ${ $lorem.s(40) }
+      </div>
+    </div>
+
+    <template id="template-counter">
+      <button
+        @click.prevent="[inc(), (open = !open)]"
+        class="px-10"
+        v-ripple
+        v-swipe="(args) => console.log(args)"
+        v-style:height="('60px')"
+        v-css:is="count"
+        v-css:on="css.on"
+        v-css:off="css.off"
+        ----
+        v-other
+        ----
+        v-theme:is="open"
+        ----
+        v-theme="('primary')"
+        v-theme:text="('white')"
+        v-theme:border="('primary')"
+        ----
+        v-theme:active="('success')"
+        v-theme:active-border="('black')"
+        ----
+        v-theme:error="('danger')"
+        v-theme:error-text="('success')"
+        v-theme:error-border="('success')"
+      >
+        +
+      </button>
+      My count is ${ count }
+    </template>
+
+    <template id="template-popover">
+      <div v-scope="{open : false}" v-hover="({value})=>open = value">
+        <button
+          x-data
+          x-ripple
+          class="px-4 py-3 br-100p bd-a bw-1 sb-12 is-large e-p"
+          @click.prevent="open = !open"
+        >
+          H
+        </button>
+
+        <div
+          class="animate__animated animate__faster"
+          v-css.hide:is="open"
+          v-css:on="('animate__fadeIn')"
+          v-css:off="('animate__fadeOut')"
+          v-popover="{ x:'auto', y:'auto' }"
+          v-popover:space="{ x:'30px', y:'30px' }"
+        >
+          <div
+            class="bd-a sb-12"
+            v-style:width="('200px')"
+            v-style:height="('200px')"
+            v-theme="('danger')"
+          >
+            The Content
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="template-form">
+      <form v-scope="{ value: '22', unmasked:'' }">
+        <!-- Text Input -->
+        <div class="form-group">
+          <label for="text-input">Text Input</label>
+          <input
+            type="text"
+            id="text-input"
+            name="text-input"
+            v-mask="('0-0')"
+            v-mask:value="value"
+            v-mask:unmasked="unmasked"
+          />
+        </div>
+        ${ value } | ${ unmasked }
+
+        <!-- Password Input -->
+        <div class="form-group">
+          <label for="password-input">Password Input</label>
+          <input type="password" id="password-input" name="password-input" />
+        </div>
+
+        <!-- Email Input -->
+        <div class="form-group">
+          <label for="email-input">Email Input</label>
+          <input type="email" id="email-input" name="email-input" />
+        </div>
+
+        <!-- Number Input -->
+        <div class="form-group">
+          <label for="number-input">Number Input</label>
+          <input type="number" id="number-input" name="number-input" />
+        </div>
+
+        <!-- Date Input -->
+        <div class="form-group">
+          <label for="date-input">Date Input</label>
+          <input type="date" id="date-input" name="date-input" />
+        </div>
+
+        <!-- Time Input -->
+        <div class="form-group">
+          <label for="time-input">Time Input</label>
+          <input type="time" id="time-input" name="time-input" />
+        </div>
+
+        <!-- Color Input -->
+        <div class="form-group">
+          <label for="color-input">Color Input</label>
+          <input type="color" id="color-input" name="color-input" />
+        </div>
+
+        <!-- Range Input -->
+        <div class="form-group">
+          <label for="range-input">Range Input</label>
+          <input
+            type="range"
+            id="range-input"
+            name="range-input"
+            min="0"
+            max="100"
+          />
+        </div>
+
+        <!-- Checkbox -->
+        <div class="form-group">
+          <label>Checkbox</label>
+          <input
+            type="checkbox"
+            id="checkbox-input1"
+            name="checkbox-input"
+            value="option1"
+          />
+          <label for="checkbox-input1">Option 1</label>
+          <input
+            type="checkbox"
+            id="checkbox-input2"
+            name="checkbox-input"
+            value="option2"
+          />
+          <label for="checkbox-input2">Option 2</label>
+        </div>
+
+        <!-- Radio Buttons -->
+        <div class="form-group">
+          <label>Radio Buttons</label>
+          <input
+            type="radio"
+            id="radio-input1"
+            name="radio-input"
+            value="option1"
+          />
+          <label for="radio-input1">Option 1</label>
+          <input
+            type="radio"
+            id="radio-input2"
+            name="radio-input"
+            value="option2"
+          />
+          <label for="radio-input2">Option 2</label>
+        </div>
+
+        <!-- Select -->
+        <div class="form-group">
+          <label for="select-input">Select</label>
+          <select id="select-input" name="select-input">
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+        </div>
+
+        <!-- Textarea -->
+        <div class="form-group">
+          <label for="textarea-input">Textarea</label>
+          <textarea
+            id="textarea-input"
+            name="textarea-input"
+            rows="4"
+            cols="50"
+          ></textarea>
+        </div>
+
+        <!-- File Input -->
+        <div class="form-group">
+          <label for="file-input">File Input</label>
+          <input type="file" id="file-input" name="file-input" />
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </template>
+
+    <script type="module" src="/index.ts"></script>
+  </body>
+</html>

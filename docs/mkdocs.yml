@@ -8,6 +8,7 @@ nav:
   - Init: configurations.md
   - State: store.md
   - Directives: directives.md
+  - Plugins: plugins.md
   - Built-In:
       - Magic: built-in/magic.md
       - Directives: built-in/directives.md

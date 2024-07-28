@@ -5,7 +5,7 @@
 ## Installing a Directive
 
 ```js
-vuek.directive("my-dir", (ctx) => console.log(ctx));
+vueky.directive("my-dir", (ctx) => console.log(ctx));
 ```
 
 ## Using a Directive
@@ -105,7 +105,7 @@ const Mask = ({ el: element, get, exp, arg }: any) => {
 
 ```html
 <script>
-  vuek.directive("mask", Mask);
+  vueky.directive("mask", Mask);
 </script>
 
 <form v-scope="{ value: '22', unmasked:'' }">

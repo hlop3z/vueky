@@ -15,11 +15,11 @@ Define and manipulate local state within a component.
 
 ## Global State
 
-Register a global store using **vuek.store** and access it with the magic word **`$store`**.
+Register a global store using **vueky.store** and access it with the magic word **`$store`**.
 
 ```js
 // Register a global store
-vuek.store("darkMode", {
+vueky.store("darkMode", {
   on: false,
   toggle() {
     this.on = !this.on;
@@ -27,10 +27,10 @@ vuek.store("darkMode", {
 });
 
 // Toggle the dark mode
-vuek.store("darkMode").toggle();
+vueky.store("darkMode").toggle();
 
 // Get the current value
-console.log(vuek.store("darkMode").on);
+console.log(vueky.store("darkMode").on);
 ```
 
 ### Inside Components
@@ -40,7 +40,7 @@ Use global state within components to maintain consistency across your applicati
 ```html
 <script>
   // Register a global store for demonstration purposes
-  vuek.store("demo", {
+  vueky.store("demo", {
     count: 0,
     inc() {
       this.count++;

@@ -1,6 +1,6 @@
 # (API) Application Programming Interface
 
-The **`vuek.API`** function simplifies making HTTP requests to a specified base URL with customizable options. This documentation provides an overview of how to set up the API client and make GET, POST, and file upload requests.
+The **`vueky.API`** function simplifies making HTTP requests to a specified base URL with customizable options. This documentation provides an overview of how to set up the API client and make GET, POST, and file upload requests.
 
 ## Setup
 
@@ -14,7 +14,7 @@ const options = {
   },
 };
 
-const api = vuek.API(baseURL, options);
+const api = vueky.API(baseURL, options);
 ```
 
 - `baseURL`: The base URL for the API.

@@ -15,7 +15,7 @@ Utilizes the registered components, enabling modular and reusable elements acros
 
 ```html
 <script>
-  vuek.component("button", (props) => {
+  vueky.component("button", (props) => {
     return {
       $template: "<button>${ text }</button>",
       text: props.text,
@@ -37,7 +37,7 @@ Enables multilingual support by offering translation strings based on the curren
 
 ```js
 // Register translations
-vuek.init({
+vueky.init({
   i18n: {
     en: {
       greeting: "Hello",
@@ -49,8 +49,8 @@ vuek.init({
 });
 
 // Switch language
-vuek.magic("$i18n").locale = "fr";
-console.log(vuek.magic("$i18n")("greeting"));
+vueky.magic("$i18n").locale = "fr";
+console.log(vueky.magic("$i18n")("greeting"));
 ```
 
 ```html

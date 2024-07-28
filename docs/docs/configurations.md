@@ -1,6 +1,6 @@
 # Configurations `init`
 
-Initializes Vuek with the provided configuration settings.
+Initializes Vueky with the provided configuration settings.
 
 ## Fields
 
@@ -18,7 +18,7 @@ Initializes Vuek with the provided configuration settings.
 All fields are optional.
 
 ```js
-vuek.init({
+vueky.init({
   mobile: ["xs", "sm", "md"], // Define responsive breakpoints
   i18n: {
     // Internationalization settings
@@ -49,7 +49,7 @@ vuek.init({
 ## Setup Example
 
 ```js
-vuek.init({
+vueky.init({
   // Default: ["xs", "sm", "md"]
   mobile: ["xs", "sm", "md"], // Options: ["xs", "sm", "md", "lg", "xl"]
   i18n: {

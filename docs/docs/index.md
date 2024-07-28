@@ -1,22 +1,22 @@
 # Welcome to MkDocs
 
-Vuek is a **standalone** wrapper and extension of <a href="https://github.com/vuejs/petite-vue" target="_blank">**`petite-vue`**</a> and also inspired by **`alpinejs`**, designed to offer a more robust and feature-rich experience while maintaining the lightweight and reactive nature of the original library. Vuek enhances the core capabilities of petite-vue by introducing additional functionalities.
+Vueky is a **standalone** wrapper and extension of <a href="https://github.com/vuejs/petite-vue" target="_blank">**`petite-vue`**</a> and also inspired by **`alpinejs`**, designed to offer a more robust and feature-rich experience while maintaining the lightweight and reactive nature of the original library. Vueky enhances the core capabilities of petite-vue by introducing additional functionalities.
 
 ## Usage
 
 ```html
-<script src="https://unpkg.com/vuek@latest"></script>
+<script src="https://unpkg.com/vueky@latest"></script>
 ```
 
 ## Templates
 
-By default, Vuek templates use Custom Delimiters.
+By default, Vueky templates use Custom Delimiters.
 
-| Petite-Vue          | Vuek               |
+| Petite-Vue          | Vueky              |
 | ------------------- | ------------------ |
 | **`{{ myValue }}`** | **`${ myValue }`** |
 
-Instead of using mustaches e.g. **`{{ myValue }}`**, Vuek uses **`${ myValue }`**.
+Instead of using mustaches e.g. **`{{ myValue }}`**, Vueky uses **`${ myValue }`**.
 
 This design choice ensures seamless integration with Django, Jinja2, or any other tool/framework that also utilizes mustache-style syntax.
 
@@ -24,16 +24,16 @@ This design choice ensures seamless integration with Django, Jinja2, or any othe
 <div v-scope>${ myValue }</div>
 ```
 
-## Features (**`Vuek`**)
+## Features (**`Vueky`**)
 
-| Name                   | Description                                                        |
-| ---------------------- | ------------------------------------------------------------------ |
-| **`vuek.init()`**      | Initializes Vuek with the provided configuration.                  |
-| **`vuek.use()`**       | Plugin registration tool.                                          |
-| **`vuek.store()`**     | Registers a reactive global object for state management.           |
-| **`vuek.magic()`**     | Registers a global variable accessible via special **`$`** syntax. |
-| **`vuek.directive()`** | Registers a custom global directive for use in templates.          |
-| **`vuek.component()`** | Registers a custom global component for use in templates.          |
+| Name                    | Description                                                        |
+| ----------------------- | ------------------------------------------------------------------ |
+| **`vueky.init()`**      | Initializes Vueky with the provided configuration.                 |
+| **`vueky.use()`**       | Plugin registration tool.                                          |
+| **`vueky.store()`**     | Registers a reactive global object for state management.           |
+| **`vueky.magic()`**     | Registers a global variable accessible via special **`$`** syntax. |
+| **`vueky.directive()`** | Registers a custom global directive for use in templates.          |
+| **`vueky.component()`** | Registers a custom global component for use in templates.          |
 
 ## Features (**`petite-vue`**)
 

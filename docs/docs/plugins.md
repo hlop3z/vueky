@@ -33,12 +33,12 @@ const Plugin = {
 
 ```js
 // Install
-vuek.use(Plugin);
+vueky.use(Plugin);
 
 // Install with Options
-vuek.use(Plugin, { arg: "one" });
+vueky.use(Plugin, { arg: "one" });
 
 // Run
-vuek.init();
-vuek.app().mount();
+vueky.init();
+vueky.app().mount();
 ```

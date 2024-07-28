@@ -1,6 +1,6 @@
 {
   "name": "vueky",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Petite-Vue Toolkit (Stand-Alone)",
   "author": "hlop3z",
   "license": "MIT",
@@ -18,5 +18,20 @@
     "vite": "^5.3.4",
     "@rollup/plugin-terser": "^0.4.4",
     "rollup": "^3.29.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hlop3z/vueky.git"
+  },
+  "keywords": [
+    "library",
+    "petite-vue"
+  ],
+  "bugs": {
+    "url": "https://github.com/hlop3z/vueky/issues"
+  },
+  "homepage": "https://github.com/hlop3z/vueky#readme",
+  "files": [
+    "dist"
+  ]
 }

@@ -29,7 +29,6 @@ const Project: any = {
   },
 
   // Global Dict
-  __magic__: {},
   __dict__: {
     store: {},
     directives: {},

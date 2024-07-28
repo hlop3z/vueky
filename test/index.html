@@ -31,6 +31,12 @@
     <!-- iMask -->
     <script src="https://unpkg.com/imask"></script>
 
+    <!-- Vueky
+    <script src="./index.min.js"></script>
+    -->
+
+    <script src="https://unpkg.com/vueky@latest"></script>
+
     <style>
       .form-group {
         margin-bottom: 10px;
@@ -39,18 +45,14 @@
   </head>
 
   <body>
-    <section id="app" class="d-f df-col dy-ce eh-100p">
-      <div v-scope>${ $i18n('greetings.hello') }</div>
-      <div v-scope="$use.button({ text: 'click me' })"></div>
-      <div v-scope>
-        <p>${ $lorem.word(5) }</p>
-        <!-- Generates 5 words -->
-        <p>${ $lorem.sentence(5) }</p>
-        <!-- Generates 5 sentence -->
-        <p>${ $lorem.s(50) }</p>
-        <!-- Generates 50 sentence -->
-      </div>
-    </section>
-    <script type="module" src="/index.ts"></script>
+    <div v-scope class="oy-a eh-100p">
+      <p>${ $lorem.s(100) }</p>
+    </div>
+
+    <script>
+      vueky.init();
+      vueky.app().mount();
+      console.log(vueky);
+    </script>
   </body>
 </html>

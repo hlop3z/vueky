@@ -1,5 +1,4 @@
 - **`v-css`**: Provides a way to apply custom CSS rules directly within templates.
-- **`v-theme`**: Manages theme-based styles, allowing easy switching between themes.
 - **`v-style`**: Applies dynamic styles to elements based on reactive data.
 - **`v-hover`**: Triggers actions when an element is hovered over.
 - **`v-ripple`**: Adds a ripple effect to elements when clicked.
@@ -20,48 +19,6 @@ Adds a ripple effect to elements when clicked.
 ```html
 <div>
   <button v-ripple>Click Me for Ripple Effect</button>
-</div>
-```
-
-### `v-theme`
-
-Manages theme-based styles, enabling easy switching between themes.
-
-- If the value is **`"error"`**, the error theme is activated.
-
-Otherwise
-
-- If the value is **`true`** or **`false`**, the active and default themes are applied respectively.
-
-#### Example:
-
-```html
-<div v-scope="{ active: false, value: 'error' }">
-  <button
-    @click.prevent="(active = !active)"
-    v-theme:is="active"
-    v-theme="('primary')"
-    v-theme:text="('white')"
-    v-theme:border="('white')"
-    v-theme:active="('success')"
-    v-theme:active-text="('black')"
-    v-theme:active-border="('black')"
-  >
-    Click Me
-  </button>
-
-  <button
-    @click.prevent="(value ? (value = 'error') : (value = null))"
-    v-theme:is="value"
-    v-theme="('primary')"
-    v-theme:text="('white')"
-    v-theme:border="('white')"
-    v-theme:error="('danger')"
-    v-theme:error-text="('black')"
-    v-theme:error-border="('black')"
-  >
-    Click Me
-  </button>
 </div>
 ```
 
@@ -180,7 +137,6 @@ Creates popover elements that display additional content when triggered.
       class="bd-a sb-12"
       v-style:width="('200px')"
       v-style:height="('200px')"
-      v-theme="('danger')"
     >
       The Content
     </div>

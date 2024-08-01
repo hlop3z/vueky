@@ -1,8 +1,17 @@
 # Magic
 
+- **`$globals`**: Global Variables
 - **`$use`**: Registered Components
 - **`$i18n`**: Translations
 - **`$lorem`**: Utility for Testing Areas
+
+## **`$globals`**: Variables
+
+**Example:**
+
+```html
+<p v-scope>${ $globals.title }</p>
+```
 
 ## **`$use`**: Registered Components
 

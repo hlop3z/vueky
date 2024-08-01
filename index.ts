@@ -75,43 +75,8 @@ Core.init({
       console.log($app.magic("i18n")("greetings.hello"));
     },
   },
-  theme: {
-    base: {
-      // Core
-      none: "transparent", // None
-      white: "white", // White
-      black: "black", // Black
-      gray: "#a5a5a5", // Gray
-      light: "#fff", // Light
-      dark: "#424242", // Dark
-
-      // Main
-      context: "#616161",
-
-      // Util
-      success: "#4CAF50",
-      danger: "#F44336",
-      warning: "#ff9800",
-      info: "#2196F3",
-
-      // Theme
-      primary: "#ba68c8",
-      secondary: "#c2185b",
-    },
-    dark: {
-      // Main
-      context: "#a5a5a5",
-
-      // Util
-      success: "#4CAF50",
-      danger: "#F44336",
-      warning: "#ff9800",
-      info: "#2196F3",
-
-      // Theme
-      primary: "#c2185b",
-      secondary: "#ba68c8",
-    },
+  globals: {
+    title: "My Project",
   },
 });
 

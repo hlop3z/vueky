@@ -1,5 +1,4 @@
-import { directive, theme, inject, ripple } from "./utils/__init__.ts";
-import Color from "./utils/internal/colors.ts";
+import { directive, inject, ripple } from "./utils/__init__.ts";
 import getPosition from "./utils/internal/position.ts";
 import setPopover from "./utils/internal/popover.ts";
 
@@ -23,69 +22,6 @@ export default function (App: any) {
         effect(() => {
           element.style[value] = get();
         });
-      }
-    },
-    /**
-     * @directive => Theme
-     */
-    theme: ({ el: element, arg, exp: expression, get, effect }: any) => {
-      const isAdmin = arg === "is";
-
-      const actionTypes = ["theme", "theme_active", "theme_error"];
-      actionTypes.forEach((type) => {
-        directive.object(type, element);
-      });
-
-      if (isAdmin && expression) {
-        const dict = element.__dict__;
-
-        const applyClasses = (activeType: string) => {
-          App.nextTick(() => {
-            Color.types.forEach((type) => {
-              actionTypes.forEach((actionType) => {
-                element.classList.remove(dict[actionType][type]);
-              });
-              if (dict[activeType][type]) {
-                element.classList.add(dict[activeType][type]);
-              } else if (dict.theme[type]) {
-                element.classList.add(dict.theme[type]);
-              }
-            });
-          });
-        };
-
-        effect(() => {
-          const value = get();
-          if ([true, "active"].includes(value)) {
-            applyClasses("theme_active");
-          } else if ([false, undefined, null, ""].includes(value)) {
-            applyClasses("theme");
-          } else if (value === "error") {
-            applyClasses("theme_error");
-          }
-        });
-      } else {
-        if (expression) {
-          const value = get();
-          const setup: any = Color.setup({ arg });
-          if (setup.base) {
-            if (Color.types.includes(setup.type)) {
-              const color = theme.class(setup.type, value);
-              element.__dict__.theme[setup.type] = color;
-              element.classList.add(color);
-            }
-          } else if (setup.active) {
-            if (Color.types.includes(setup.type)) {
-              const color = theme.class(setup.type, value);
-              element.__dict__.theme_active[setup.type] = color;
-            }
-          } else if (setup.error) {
-            if (Color.types.includes(setup.type)) {
-              const color = theme.class(setup.type, value);
-              element.__dict__.theme_error[setup.type] = color;
-            }
-          }
-        }
       }
     },
     /**

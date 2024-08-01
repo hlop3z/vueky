@@ -19,16 +19,15 @@ const Project: any = {
 
   // Utils
   API: Util.api,
-  theme: Util.theme,
   util: {
     actions: Util.actions,
-    form: Util.form,
     i18n: Util.i18n,
     inject: Util.inject,
     validator: Util.validator,
   },
 
   // Global Dict
+  globals: {},
   __dict__: {
     store: {},
     directives: {},
@@ -84,6 +83,10 @@ const Project: any = {
    */
   init(options?) {
     this.use(PluginCore, options || {});
+    if (options.globals) {
+      this.globals = options.globals;
+      this.magic("globals", () => this.globals);
+    }
   },
 
   /**

@@ -1,7 +1,7 @@
 /**
  * The CSS class prefix used for custom styles.
  */
-const prefixCSS = "gui-design";
+const prefixCSS = "vueky-design";
 
 /**
  * Injects replaceable CSS.

@@ -10,7 +10,7 @@ const isDark =
 const _CORE = ["store", "components", "directives", "magic"];
 
 export default {
-  __kwargs__: ["methods", "theme", "i18n", "mobile", ..._CORE],
+  __kwargs__: ["methods", "i18n", "mobile", ..._CORE],
 
   install: (App, opts) => {
     const options = opts || {};
@@ -32,20 +32,8 @@ export default {
       on: isDark,
       toggle() {
         this.on = !this.on;
-        // Change Theme
-        if (options.theme && App.theme && App.theme.toggle) {
-          App.theme.toggle();
-        }
       },
     });
-
-    // Theme
-    if (options.theme) {
-      App.theme.set({
-        ...options.theme,
-        darkMode: isDark,
-      });
-    }
 
     // Actions
     if (options.methods) {

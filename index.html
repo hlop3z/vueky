@@ -40,6 +40,7 @@
 
   <body>
     <section id="app" class="d-f df-col dy-ce eh-100p">
+      <p v-scope>${ $globals.title }</p>
       <div v-scope>${ $i18n('greetings.hello') }</div>
       <div v-scope="$use.button({ text: 'click me' })"></div>
       <div v-scope>

@@ -1,6 +1,7 @@
 - **`v-css`**: Provides a way to apply custom CSS rules directly within templates.
 - **`v-style`**: Applies dynamic styles to elements based on reactive data.
 - **`v-hover`**: Triggers actions when an element is hovered over.
+- **`v-click-outside`**: Triggers actions when an other element is clicked.
 - **`v-ripple`**: Adds a ripple effect to elements when clicked.
 - **`v-scroll`**: Handles scroll events, allowing for actions based on scroll position.
 - **`v-swipe`**: Detects swipe gestures and triggers actions based on swipe direction.
@@ -73,6 +74,19 @@ Triggers actions when an element is hovered over.
 <div v-scope="{ hover: false }">
   <div v-hover="({ value }) => (hover = value)">Hover over me!</div>
   <div v-if="hover">You are hovering!</div>
+</div>
+```
+
+### `v-click-outside`
+
+Triggers actions when an other element is clicked.
+
+#### Example:
+
+```html
+<div v-scope="{ open : false }" v-click-outside="() => { open = false }">
+  <div @click="open = !open">Click Me</div>
+  <div v-if="open">Popover Content</div>
 </div>
 ```
 

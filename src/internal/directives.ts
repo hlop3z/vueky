@@ -94,6 +94,20 @@ export default function (App: any) {
       };
     },
     /**
+     * @directive => Click-Outside
+     */
+    "click-outside": ({ el: element, get }: any) => {
+      const handler = (event: any) => {
+        const isClickInsideElement = element.contains(event.target);
+        if (!isClickInsideElement) {
+          const method = get();
+          method();
+        }
+      };
+      document.addEventListener("click", handler);
+      return () => document.removeEventListener("click", handler);
+    },
+    /**
      * @directive => Swipe
      */
     swipe: ({ el: element, get }: any) => {

@@ -5,6 +5,7 @@ Initializes Vueky with the provided configuration settings.
 ## Fields
 
 - **`mobile`**: Defines responsive breakpoints for different screen sizes.
+- **`router`**: Router settings.
 - **`globals`**: Defines global variables.
 - **`i18n`**: Sets up internationalization with localized strings.
 - **`store`**: Initializes a global reactive store for state management.
@@ -20,6 +21,9 @@ All fields are optional.
 ```js
 vueky.init({
   mobile: ["xs", "sm", "md"], // Define responsive breakpoints
+  router: {
+    // Router settings
+  },
   globals: {
     // Global variables
   },
@@ -50,6 +54,10 @@ vueky.init({
 vueky.init({
   // Default: ["xs", "sm", "md"]
   mobile: ["xs", "sm", "md"], // Options: ["xs", "sm", "md", "lg", "xl"]
+  router: {
+    history: true,
+    baseURL: "apps/",
+  },
   globals: {
     title: "My Project",
   },

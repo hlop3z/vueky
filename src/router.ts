@@ -36,6 +36,9 @@ class RouterAPI {
       before: options.before,
       after: options.before,
     };
+
+    // History
+    this._historyListen();
   }
 
   is(val: string) {
@@ -123,6 +126,14 @@ class RouterAPI {
     openName
       ? openOrFocusWindow(fullPath, openName)
       : (window.location.href = fullPath);
+  }
+  private _historyListen() {
+    const vm = this;
+    window.addEventListener("popstate", function () {
+      const router = vm._getCurrent();
+      vm.current.route = router.route;
+      vm.current.search = router.search;
+    });
   }
 
   private _cleanURL(route: any): any {

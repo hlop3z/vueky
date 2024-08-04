@@ -202,8 +202,9 @@ Core.component("form", (props) => {
 
 Core.component("button", (props) => {
   return {
-    $template: "<button>${ text }</button>",
+    $template: "<button @click={click()}>${ text }</button>",
     text: props.text,
+    click: props.click,
   };
 });
 

@@ -1,6 +1,7 @@
 # Magic
 
 - **`$globals`**: Global Variables
+- **`$router`**: Router Admin
 - **`$use`**: Registered Components
 - **`$i18n`**: Translations
 - **`$lorem`**: Utility for Testing Areas
@@ -11,6 +12,26 @@
 
 ```html
 <p v-scope>${ $globals.title }</p>
+```
+
+## **`$router`**: Admin
+
+- **`router.current`**: Retrieves the current route and search parameters.
+- **`router.is("view-name")`**: Checks if the given view name matches the current route.
+- **`router.go("name", { params })`**: Navigates to the specified route. You can optionally add search parameters to the route.
+
+**Example:** HTML
+
+```html
+<p v-scope>${ $router.current }</p>
+<!-- OR -->
+<p v-scope>${ vueky.router.current }</p>
+```
+
+**Example:** JS
+
+```js
+vueky.router.go("about-us", { key: "one" });
 ```
 
 ## **`$use`**: Registered Components

@@ -3,6 +3,7 @@ import { createApp, nextTick, reactive } from "./external/petite-vue.es.js";
 
 import PluginCore from "./internal/__init__.ts";
 import * as Util from "./internal/utils/__init__.ts";
+import Router from "./router.ts";
 
 const __MAGIC__ = ["delimiters", "store", "magic", "use"];
 
@@ -83,10 +84,18 @@ const Project: any = {
    */
   init(options?) {
     this.use(PluginCore, options || {});
+    // Globals
     if (options.globals) {
       this.globals = options.globals;
       this.magic("globals", () => this.globals);
     }
+    // Router
+    this.router = Router({
+      history: false,
+      baseURL: "",
+      ...options.router,
+    });
+    this.magic("router", () => this.router);
   },
 
   /**

@@ -2,6 +2,10 @@ import Core from "./src/__init__.ts";
 
 Core.init({
   mobile: ["xs", "sm", "md", "lg", "xl"],
+  router: {
+    history: true,
+    baseURL: "/apps/",
+  },
   i18n: {
     en: {
       greetings: {
@@ -86,6 +90,17 @@ Core.method("demo", { keyA: true });
 
 Core.magic("i18n").locale = "fr";
 console.log(Core.magic("i18n")("greetings.hello"));
+
+setTimeout(() => {
+  Core.router.go("home", { key: "one" });
+}, 1000);
+
+setTimeout(() => {
+  Core.router.go("/");
+}, 2000);
+
+// @ts-ignore
+window.vueky = Core;
 
 /*
 const Plugin = {

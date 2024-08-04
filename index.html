@@ -43,6 +43,10 @@
       <p v-scope>${ $globals.title }</p>
       <div v-scope>${ $i18n('greetings.hello') }</div>
       <div v-scope="$use.button({ text: 'click me' })"></div>
+      <div>
+        <p v-scope>${ $router.current }</p>
+        <p v-scope>${ $router.is('home') }</p>
+      </div>
       <div v-scope>
         <p>${ $lorem.word(5) }</p>
         <!-- Generates 5 words -->

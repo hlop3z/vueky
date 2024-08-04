@@ -584,6 +584,30 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#v-click-outside" class="md-nav__link">
+    <span class="md-ellipsis">
+      v-click-outside
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v-click-outside">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#v-scroll" class="md-nav__link">
     <span class="md-ellipsis">
       v-scroll
@@ -594,7 +618,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example_4" class="md-nav__link">
+  <a href="#example_5" class="md-nav__link">
     <span class="md-ellipsis">
       Example:
     </span>
@@ -618,7 +642,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example_5" class="md-nav__link">
+  <a href="#example_6" class="md-nav__link">
     <span class="md-ellipsis">
       Example:
     </span>
@@ -642,7 +666,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example_6" class="md-nav__link">
+  <a href="#example_7" class="md-nav__link">
     <span class="md-ellipsis">
       Example:
     </span>
@@ -807,6 +831,30 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#v-click-outside" class="md-nav__link">
+    <span class="md-ellipsis">
+      v-click-outside
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v-click-outside">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#v-scroll" class="md-nav__link">
     <span class="md-ellipsis">
       v-scroll
@@ -817,7 +865,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example_4" class="md-nav__link">
+  <a href="#example_5" class="md-nav__link">
     <span class="md-ellipsis">
       Example:
     </span>
@@ -841,7 +889,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example_5" class="md-nav__link">
+  <a href="#example_6" class="md-nav__link">
     <span class="md-ellipsis">
       Example:
     </span>
@@ -865,7 +913,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example_6" class="md-nav__link">
+  <a href="#example_7" class="md-nav__link">
     <span class="md-ellipsis">
       Example:
     </span>
@@ -907,6 +955,7 @@
 <li><strong><code>v-css</code></strong>: Provides a way to apply custom CSS rules directly within templates.</li>
 <li><strong><code>v-style</code></strong>: Applies dynamic styles to elements based on reactive data.</li>
 <li><strong><code>v-hover</code></strong>: Triggers actions when an element is hovered over.</li>
+<li><strong><code>v-click-outside</code></strong>: Triggers actions when an other element is clicked.</li>
 <li><strong><code>v-ripple</code></strong>: Adds a ripple effect to elements when clicked.</li>
 <li><strong><code>v-scroll</code></strong>: Handles scroll events, allowing for actions based on scroll position.</li>
 <li><strong><code>v-swipe</code></strong>: Detects swipe gestures and triggers actions based on swipe direction.</li>
@@ -960,30 +1009,38 @@
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;hover&quot;</span><span class="p">&gt;</span>You are hovering!<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
+<h3 id="v-click-outside"><code>v-click-outside</code></h3>
+<p>Triggers actions when an other element is clicked.</p>
+<h4 id="example_4">Example:</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-scope</span><span class="o">=</span><span class="s">&quot;{ open : false }&quot;</span> <span class="na">v-click-outside</span><span class="o">=</span><span class="s">&quot;() =&gt; { open = false }&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&quot;open = !open&quot;</span><span class="p">&gt;</span>Click Me<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;open&quot;</span><span class="p">&gt;</span>Popover Content<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
 <h3 id="v-scroll"><code>v-scroll</code></h3>
 <p>Handles scroll events, allowing for actions based on scroll position.</p>
-<h4 id="example_4">Example:</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-scope</span><span class="o">=</span><span class="s">&quot;{ position: 0 }&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  <span class="p">&lt;</span><span class="nt">div</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="na">v-scroll</span><span class="o">=</span><span class="s">&quot;({ value }) =&gt; position = value.y&quot;</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="na">style</span><span class="o">=</span><span class="s">&quot;height: 100px; overflow-y: scroll&quot;</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>  <span class="p">&gt;</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;height: 300px&quot;</span><span class="p">&gt;</span>Scroll me!<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>Scroll Position: ${ position }<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<h4 id="example_5">Example:</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-scope</span><span class="o">=</span><span class="s">&quot;{ position: 0 }&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  <span class="p">&lt;</span><span class="nt">div</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="na">v-scroll</span><span class="o">=</span><span class="s">&quot;({ value }) =&gt; position = value.y&quot;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="na">style</span><span class="o">=</span><span class="s">&quot;height: 100px; overflow-y: scroll&quot;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>  <span class="p">&gt;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;height: 300px&quot;</span><span class="p">&gt;</span>Scroll me!<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>Scroll Position: ${ position }<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
 <h3 id="v-swipe"><code>v-swipe</code></h3>
 <p>Detects swipe gestures and triggers actions based on swipe direction.</p>
-<h4 id="example_5">Example:</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-scope</span><span class="p">&gt;</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  <span class="p">&lt;</span><span class="nt">div</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="na">v-swipe</span><span class="o">=</span><span class="s">&quot;({ value }) =&gt; console.log(value)&quot;</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="na">style</span><span class="o">=</span><span class="s">&quot;width: 100px; height: 100px; background-color: lightblue;&quot;</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>  <span class="p">&gt;</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    Swipe Me!
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<h4 id="example_6">Example:</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-scope</span><span class="p">&gt;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  <span class="p">&lt;</span><span class="nt">div</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="na">v-swipe</span><span class="o">=</span><span class="s">&quot;({ value }) =&gt; console.log(value)&quot;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="na">style</span><span class="o">=</span><span class="s">&quot;width: 100px; height: 100px; background-color: lightblue;&quot;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>  <span class="p">&gt;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    Swipe Me!
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
 <h3 id="v-popover"><code>v-popover</code></h3>
 <p>Creates popover elements that display additional content when triggered.</p>
@@ -992,27 +1049,27 @@
 <li><strong><code>y</code></strong>: Vertical positioning. Options are <strong><code>auto</code></strong>, <strong><code>center</code></strong>, <strong><code>top</code></strong>, <strong><code>bottom</code></strong>.</li>
 <li><strong><code>:space</code></strong>: Adds space between the activator and the content.</li>
 </ul>
-<h4 id="example_6">Example:</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-scope</span><span class="o">=</span><span class="s">&quot;{open : false}&quot;</span> <span class="na">v-hover</span><span class="o">=</span><span class="s">&quot;({ value }) =&gt; open = value&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">x-data</span> <span class="na">x-ripple</span> <span class="err">@</span><span class="na">click</span><span class="err">.</span><span class="na">prevent</span><span class="o">=</span><span class="s">&quot;open = !open&quot;</span><span class="p">&gt;</span>PopOver + CSS<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>  <span class="p">&lt;</span><span class="nt">div</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="na">v-popover</span><span class="o">=</span><span class="s">&quot;{ x:&#39;auto&#39;, y:&#39;auto&#39; }&quot;</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="na">v-popover:space</span><span class="o">=</span><span class="s">&quot;{ x:&#39;0px&#39;, y:&#39;10px&#39; }&quot;</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="na">class</span><span class="o">=</span><span class="s">&quot;animate__animated animate__faster&quot;</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="na">v-css</span><span class="err">.</span><span class="na">hide:is</span><span class="o">=</span><span class="s">&quot;open&quot;</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="na">v-css:on</span><span class="o">=</span><span class="s">&quot;(&#39;animate__fadeIn&#39;)&quot;</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    <span class="na">v-css:off</span><span class="o">=</span><span class="s">&quot;(&#39;animate__fadeOut&#39;)&quot;</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>  <span class="p">&gt;</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    <span class="p">&lt;</span><span class="nt">div</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>      <span class="na">class</span><span class="o">=</span><span class="s">&quot;bd-a sb-12&quot;</span>
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>      <span class="na">v-style:width</span><span class="o">=</span><span class="s">&quot;(&#39;200px&#39;)&quot;</span>
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>      <span class="na">v-style:height</span><span class="o">=</span><span class="s">&quot;(&#39;200px&#39;)&quot;</span>
-<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>    <span class="p">&gt;</span>
-<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>      The Content
-<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<h4 id="example_7">Example:</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-scope</span><span class="o">=</span><span class="s">&quot;{open : false}&quot;</span> <span class="na">v-hover</span><span class="o">=</span><span class="s">&quot;({ value }) =&gt; open = value&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">x-data</span> <span class="na">x-ripple</span> <span class="err">@</span><span class="na">click</span><span class="err">.</span><span class="na">prevent</span><span class="o">=</span><span class="s">&quot;open = !open&quot;</span><span class="p">&gt;</span>PopOver + CSS<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>  <span class="p">&lt;</span><span class="nt">div</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="na">v-popover</span><span class="o">=</span><span class="s">&quot;{ x:&#39;auto&#39;, y:&#39;auto&#39; }&quot;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="na">v-popover:space</span><span class="o">=</span><span class="s">&quot;{ x:&#39;0px&#39;, y:&#39;10px&#39; }&quot;</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="na">class</span><span class="o">=</span><span class="s">&quot;animate__animated animate__faster&quot;</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>    <span class="na">v-css</span><span class="err">.</span><span class="na">hide:is</span><span class="o">=</span><span class="s">&quot;open&quot;</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>    <span class="na">v-css:on</span><span class="o">=</span><span class="s">&quot;(&#39;animate__fadeIn&#39;)&quot;</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>    <span class="na">v-css:off</span><span class="o">=</span><span class="s">&quot;(&#39;animate__fadeOut&#39;)&quot;</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>  <span class="p">&gt;</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>    <span class="p">&lt;</span><span class="nt">div</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>      <span class="na">class</span><span class="o">=</span><span class="s">&quot;bd-a sb-12&quot;</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>      <span class="na">v-style:width</span><span class="o">=</span><span class="s">&quot;(&#39;200px&#39;)&quot;</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>      <span class="na">v-style:height</span><span class="o">=</span><span class="s">&quot;(&#39;200px&#39;)&quot;</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>    <span class="p">&gt;</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>      The Content
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
 
 

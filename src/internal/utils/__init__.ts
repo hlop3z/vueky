@@ -1,6 +1,5 @@
 // @ts-ignore
 export { default as actions } from "./actions";
-export { default as api } from "./api";
 export { default as directive } from "./directive";
 export { default as i18n } from "./i18n";
 export { default as inject } from "./inject";

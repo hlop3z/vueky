@@ -19,7 +19,6 @@ const Project: any = {
   method: () => {},
 
   // Utils
-  API: Util.api,
   util: {
     actions: Util.actions,
     i18n: Util.i18n,

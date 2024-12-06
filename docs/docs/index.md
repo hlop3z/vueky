@@ -8,6 +8,34 @@ Vueky is a **standalone** wrapper and extension of <a href="https://github.com/v
 <script src="https://unpkg.com/vueky@latest"></script>
 ```
 
+## Example
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vueky</title>
+    <script
+      src="https://unpkg.com/vueky@latest"
+      type="text/javascript"
+    ></script>
+  </head>
+
+  <body>
+    <div v-scope>
+      <p>${ $lorem.s(50) }</p>
+    </div>
+
+    <script>
+      vueky.init();
+      vueky.app().mount();
+    </script>
+  </body>
+</html>
+```
+
 ## Templates
 
 By default, Vueky templates use Custom Delimiters.
